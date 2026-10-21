@@ -21,6 +21,7 @@ accuracy. It makes it easier to manage and maintain data and ensures that the da
 - Involves splitting data into multiple tables, which must be linked each time a query requires data from the split tables
 
 ### Problems in the Employee_Department Relation
+
 This section highlights common anomalies and redundancy issues that occur due to improper database design.
 
 1. Insertion Anomaly: If a new department is created but no employee is assigned to it yet, we cannot store its location because we need an employee record to insert.
@@ -33,6 +34,7 @@ This section highlights common anomalies and redundancy issues that occur due to
 ![After Normalization](https://media.geeksforgeeks.org/wp-content/uploads/20260211112535440628/after_normalization.webp)
 
 ### Need of Normalization
+
 The primary objective for normalizing the relations is to eliminate the below anomalies. Failure to reduce anomalies results in data redundancy, which may threaten data integrity and cause additional issues as the database increases. A seperate article on anomalies can be found at [Anomalies in Relational Model](https://www.geeksforgeeks.org/dbms/anomalies-in-relational-model/)
 
 - Insertion Anomalies: Insertion anomalies occur when it is not possible to insert data into a database because the required fields are missing or because the data is incomplete. For example, if a database requires that every record has a primary key, but no value is provided for a particular record, it cannot be inserted into the database.
@@ -58,6 +60,7 @@ Guarentees that all transactions will occur in isolation. No transaction will be
 ### Durability
 
 Durability ensures that once a transaction is commited, its changes are permanently saved, even if the system fails. The data is stored in non-volatile memory, so the database can recover to its last committed state without losing data.
+
 ## References
 
 - Wikipedia contributors. (2026). Database. In *Wikipedia, The Free Encyclopedia*. Retrieved from
