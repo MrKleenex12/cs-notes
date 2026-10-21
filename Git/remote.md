@@ -5,9 +5,11 @@ Manage the set of repositories ("remotes") whose branches you track with your lo
 ## Why Use Remotes?
 
 ### Collaboration
+
 Remotes allow multiple developers to work on the same project. Each person pushes and pulls changes to a shared remote (typically `origin`) to stay in sync.
 
 ### Forks and Upstream
+
 When you **fork** a repository (e.g., on GitHub), you create your own copy of someone else's repo. Your fork becomes `origin`, and the original repo is typically added as `upstream`:
 
 ```bash
@@ -17,18 +19,22 @@ upstream  https://github.com/original-author/repo.git (fetch)  # the original
 ```
 
 This lets you:
+
 - **Pull from `upstream`** to keep your fork up to date with the original project
 - **Push to `origin`** to save your changes on your fork
 - **Open pull requests** from your fork back to the original repo
 
 ### Multiple Remotes
+
 You aren't limited to one remote. Common reasons for multiple remotes include:
+
 - **`upstream`** — tracking the original repo you forked from
 - **`staging` / `production`** — deployment targets (e.g., Heroku, Azure)
 - **`backup`** — a mirror on another hosting platform (e.g., GitLab)
 - **Teammate forks** — fetching a colleague's branches directly
 
 ### Fetch vs Push URLs
+
 Each remote stores separate URLs for fetching and pushing. Usually they're the same, but they can differ — for example, fetching over HTTPS (public) and pushing over SSH (authenticated).
 
 ## Options
