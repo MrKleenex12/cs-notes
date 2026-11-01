@@ -1,8 +1,8 @@
 # Shell
 
 A **shell** is a program that lets you use the services of an operating system
-(OS). It sits between you and the OS: it reads your commands, asks the OS to
-carry them out, and shows you the results.
+(OS). The shell reads your commands via keyboard input or a file, asks the OS
+to carry them out, and shows you the results.
 
 ```text
 Request:  User -> Shell -> OS (kernel) -> Hardware
@@ -12,13 +12,10 @@ Response: User <- Shell <- OS (kernel) <- Hardware
 A shell is not part of the kernel. It is an ordinary program that uses the
 kernel's API (system calls), like any other application.
 
-Common uses:
-
-- file management
-- process management
-- batch processing (scripting)
-- system monitoring
-- system configuration
+- **Command Execution**: Runs system commands and programs.
+- **Script Execution**: Interprets and runs shell scripts.
+- **Process and File Management**: Handles file operations and process control.
+- **Automation**: Facilitates repetitive tasks through scripting.
 
 ## Types of shells
 
