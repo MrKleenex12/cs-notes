@@ -90,6 +90,59 @@ Content-Length: 32
 {"id":42,"name":"Alice"}
 ```
 
+## Default Ports
+
+| Protocol | Default port | Notes |
+| -------- | ------------ | ----- |
+| HTTP | 80 | Plain text, unencrypted |
+| HTTPS | 443 | HTTP over TLS, encrypted |
+| Alternate HTTP | 8080 | Common for development or proxies, not a default |
+
+## HTTPS
+
+**HTTPS** is HTTP sent over a **TLS** (Transport Layer Security) connection.
+TLS encrypts the data so it can't be read or altered in transit, and it
+authenticates the server using a certificate. The HTTP messages themselves
+are unchanged; only the connection underneath is secured.
+
+## Status Code Classes
+
+| Range | Class | Meaning | Examples |
+| ----- | ----- | ------- | -------- |
+| 1xx | Informational | Request received, continuing process | `100 Continue`, `101 Switching Protocols` |
+| 2xx | Success | Request was received and processed successfully | `200 OK`, `201 Created`, `204 No Content` |
+| 3xx | Redirection | Further action is needed, usually going to another URL | `301 Moved Permanently`, `302 Found`, `304 Not Modified` |
+| 4xx | Client error | The request is invalid or can't be fulfilled | `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found` |
+| 5xx | Server error | The server failed to handle a valid request | `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable` |
+
+### 401 vs 403
+
+| Code | Meaning | Example |
+| ---- | ------- | ------- |
+| `401 Unauthorized` | The client is **not authenticated**: credentials are missing or invalid. | Requesting a profile page without logging in. |
+| `403 Forbidden` | The client **is authenticated** but doesn't have permission. | A logged-in regular user requesting an admin-only page. |
+
+## Safe and Idempotent Methods
+
+- **Safe**: the method only reads data and doesn't change server state.
+- **Idempotent**: sending the same request multiple times has the same effect
+  on the server as sending it once.
+
+| Method | Safe | Idempotent |
+| ------ | ---- | ---------- |
+| GET | Yes | Yes |
+| HEAD | Yes | Yes |
+| OPTIONS | Yes | Yes |
+| TRACE | Yes | Yes |
+| PUT | No | Yes |
+| DELETE | No | Yes |
+| POST | No | No |
+| PATCH | No | Not guaranteed |
+| CONNECT | No | No |
+
+Example: submitting the same `POST /orders` twice can create two orders,
+while sending the same `PUT /users/42` twice leaves user 42 in the same state.
+
 ## Pros and Cons
 
 | Aspect | Pros | Cons |
